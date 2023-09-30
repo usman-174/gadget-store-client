@@ -23,7 +23,7 @@ const ShopSection = (props) => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `/api/products?keyword=${keyword || ""}&pageNumber=${productList.pagenumber || ""}`
+        `/api/products?keyword=${keyword || ""}&pageNumber=${pagenumber || ""}`
       );
 
       if (data.products.length === 0) {
@@ -44,6 +44,7 @@ const ShopSection = (props) => {
   };
 
   useEffect(() => {
+   
     listProducts();
     // eslint-disable-next-line
   }, [keyword, pagenumber]);
