@@ -10,7 +10,6 @@ import { useUser } from "../zustandStore";
 import Header from "./../components/Header";
 import Message from "./../components/LoadingError/Error";
 import { GlassMagnifier } from "react-image-magnifiers";
-import { SideBySideMagnifier } from "react-image-magnifiers";
 
 const SingleProduct = () => {
   const navigate  = useNavigate()
@@ -83,12 +82,11 @@ const [product, setProduct] = useState(null)
                   
                    <GlassMagnifier
                   magnifierSize={"35%"}
-                  square
+                  
   imageSrc={product.image}
   imageAlt={product.name}
   switchSides={false}
 
-  // largeImageSrc={product.image} // Optional
 /> 
 
                 </div>
