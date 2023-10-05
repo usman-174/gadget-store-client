@@ -23,7 +23,6 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { useUser } from "./zustandStore";
 import axios from "./http";
 import VerifyEmail from "./screens/VerifyEmail";
-
 const App = () => {
   const { setUser, user } = useUser();
   const [loading, setLoading] = useState(true);
@@ -51,7 +50,12 @@ const App = () => {
       setLoading(false);
     }
   }, [user, setUser]);
-  if (loading) return null;
+ 
+ 
+  if (loading) {
+    // Add a loading indicator here (e.g., spinner or message)
+    return <div>Loading...</div>;
+  }
 
   return (
     <GoogleOAuthProvider
@@ -61,8 +65,10 @@ const App = () => {
       }
     >
       <Router>
-        <Routes>
+      
+          <Routes>
           <Route path="/" element={<HomeScreen />} exact />
+
           <Route path="/search/:keyword" element={<HomeScreen />} exact />
           <Route path="/page/:pagenumber" element={<HomeScreen />} exact />
           <Route

@@ -9,6 +9,9 @@ import axios from "../http";
 import { useUser } from "../zustandStore";
 import Header from "./../components/Header";
 import Message from "./../components/LoadingError/Error";
+import { GlassMagnifier } from "react-image-magnifiers";
+import { SideBySideMagnifier } from "react-image-magnifiers";
+
 const SingleProduct = () => {
   const navigate  = useNavigate()
   const {id:productId} = useParams()
@@ -77,7 +80,17 @@ const [product, setProduct] = useState(null)
             <div className="row">
               <div className="col-md-6">
                 <div className="single-image">
-                  <img src={product.image} alt={product.name} />
+                  
+                   <GlassMagnifier
+                  magnifierSize={"35%"}
+                  square
+  imageSrc={product.image}
+  imageAlt={product.name}
+  switchSides={false}
+
+  // largeImageSrc={product.image} // Optional
+/> 
+
                 </div>
               </div>
               <div className="col-md-6">

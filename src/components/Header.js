@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "../http";
 import { useCart, useUser } from "../zustandStore";
 const Header = () => {
@@ -22,13 +22,17 @@ const Header = () => {
       console.log(error.response.data?.message || error.message);
     }
   };
+  const location = useLocation();
+  const currentSearch = location.search;
 
   const submitHandler = (e) => {
     e.preventDefault();
+    const newParams = new URLSearchParams(currentSearch);
+
     if (keyword.trim()) {
-      history(`/search/${keyword}`);
+      history(`/search/${keyword}?${newParams.toString()}`);
     } else {
-      history("/");
+      history(`/?${newParams.toString()}`);
     }
   };
   return (
